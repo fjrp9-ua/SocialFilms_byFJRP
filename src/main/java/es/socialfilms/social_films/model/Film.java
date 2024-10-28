@@ -17,7 +17,8 @@ public class Film implements Serializable {
 
     private String title;
 
-    private int year;
+    @Column(name = "release_year")
+    private int releaseYear;
 
     @Column(name = "running_time")
     private int runningTime;
@@ -68,12 +69,12 @@ public class Film implements Serializable {
         this.title = title;
     }
 
-    public int getYear(){
-        return year;
+    public int getReleaseYear(){
+        return releaseYear;
     }
     
-    public void setYear(int year){
-        this.year = year;
+    public void setReleaseYear(int releaseYear){
+        this.releaseYear = releaseYear;
     }
 
     public int getRunningTime(){
@@ -121,11 +122,7 @@ public class Film implements Serializable {
     }
 
     public void setDirector(Director director){
-        if(this.getDirector().equals(director)) return;
         this.director = director;
-        if(!director.getFilms().contains(this)){
-            director.getFilms().add(this);
-        }
     }
 
     // Relationship: Film *-* Actor
@@ -134,7 +131,7 @@ public class Film implements Serializable {
         return actors;
     }
 
-    public void setActor(Actor actor){
+    public void addActor(Actor actor){
         if(this.getActors().contains(actor)) return;
 
         this.actors.add(actor);

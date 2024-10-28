@@ -1,7 +1,7 @@
 package es.socialfilms.social_films.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.*;
 
 import jakarta.persistence.*;
@@ -72,11 +72,11 @@ public class Actor implements Serializable {
         this.country = country;
     }
 
-    public Date getborn() {
+    public Date getBorn() {
         return born;
     }
 
-    public void setborn(Date born) {
+    public void setBorn(Date born) {
         this.born = born;
     }
 

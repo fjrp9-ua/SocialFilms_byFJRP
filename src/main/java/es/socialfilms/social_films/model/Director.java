@@ -1,7 +1,7 @@
 package es.socialfilms.social_films.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.*;
 
 import jakarta.persistence.*;
