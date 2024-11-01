@@ -83,5 +83,16 @@ public class InitDBService {
         film1.addGenre(mafia);
         filmRepository.save(film1);
 
+        Film film2 = new Film("The Godfather: Part II");
+        film2.setCountry("United States");
+        film2.setSynopsis("The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.");
+        film2.setReleaseYear(1974);
+        film2.setDirector(director1);
+        film2.addActor(actor1);
+        film2.addActor(actor2);
+        film2.addGenre(drama);
+        film2.addGenre(mafia);
+        filmRepository.save(film2);
+
     }
 }
