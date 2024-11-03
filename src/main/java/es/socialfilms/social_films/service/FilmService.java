@@ -29,4 +29,9 @@ public class FilmService {
 
         return films;
     }
+
+    @Transactional(readOnly = true)
+    public FilmData findById(Long id){
+        return modelMapper.map(filmRepository.findFilmById(id), FilmData.class);
+    }
 }
