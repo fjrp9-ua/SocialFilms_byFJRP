@@ -1,6 +1,7 @@
 package es.socialfilms.social_films.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -8,9 +9,9 @@ import es.socialfilms.social_films.model.Film;
 
 public interface FilmRepository extends CrudRepository<Film, Long> {
 
-    public List<Film> findAll();
+    List<Film> findAll();
 
-    public List<Film> findAllByOrderById();
+    List<Film> findAllByOrderById();
 
-    public Film findFilmById(Long id);
+    Optional<Film> findById(Long id);
 }

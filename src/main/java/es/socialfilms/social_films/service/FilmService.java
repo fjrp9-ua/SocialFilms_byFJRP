@@ -32,6 +32,6 @@ public class FilmService {
 
     @Transactional(readOnly = true)
     public FilmData findById(Long id){
-        return modelMapper.map(filmRepository.findFilmById(id), FilmData.class);
+        return modelMapper.map(filmRepository.findById(id).orElse(null), FilmData.class);
     }
 }
