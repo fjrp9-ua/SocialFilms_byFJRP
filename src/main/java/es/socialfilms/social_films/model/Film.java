@@ -43,6 +43,9 @@ public class Film implements Serializable {
         inverseJoinColumns = {@JoinColumn(name = "fk_genre")})
     private Set<Genre> genres = new HashSet<>();
 
+    @OneToMany(mappedBy = "film")
+    private Set<Review> reviews = new HashSet<>();
+
     // Constructors...
 
     public Film(){}

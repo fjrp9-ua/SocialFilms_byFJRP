@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +24,10 @@ public class Review implements Serializable {
     private String review;
 
     private float rating;
+
+    @ManyToOne
+    @JoinColumn(name = "film_id")
+    private Film film;
 
     // Constructors ...
 
