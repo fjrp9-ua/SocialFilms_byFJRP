@@ -64,6 +64,19 @@ public class Review implements Serializable {
         this.rating = rating;
     }
 
+    // Relationship: Review *-1 Film
+
+    public Film getFilm(){
+        return film;
+    }
+
+    public void setFilm(Film film){
+        if (getFilm() != film){
+            this.film = film;
+            
+        }
+    }
+
     // Overrides ...
 
     public boolean equals(Object o){

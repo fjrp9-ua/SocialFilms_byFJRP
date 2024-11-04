@@ -147,6 +147,21 @@ public class Film implements Serializable {
         }
     }
 
+    // Relationship: Film 1-* Review
+
+    public Set<Review> getReviews(){
+        return reviews;
+    }
+
+    public void addReview(Review review){
+        if(getReviews().contains(review)) return;
+        this.reviews.add(review);
+        if(review.getFilm() != this){
+            review.setFilm(this);
+        }
+    }
+
+
     // Overrides...
 
     @Override

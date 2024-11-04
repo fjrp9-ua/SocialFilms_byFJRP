@@ -1,7 +1,6 @@
 package es.socialfilms.social_films.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.*;
 
 import jakarta.persistence.*;
@@ -79,6 +78,8 @@ public class Director implements Serializable {
     public void setBorn(Date born) {
         this.born = born;
     }
+
+    // Relationship: Director 1-* Film
 
     public Set<Film> getFilms(){
         return films;
