@@ -125,7 +125,10 @@ public class Film implements Serializable {
     }
 
     public void setDirector(Director director){
-        this.director = director;
+        if (!this.director.equals(director)){
+            this.director = director;
+            director.addFilm(this);
+        }
     }
 
     // Relationship: Film *-* Actor

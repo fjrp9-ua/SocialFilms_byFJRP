@@ -84,6 +84,14 @@ public class Director implements Serializable {
         return films;
     }
 
+    public void addFilm(Film film){
+        if (getFilms().contains(film)) return;
+        getFilms().add(film);
+        if (!film.getDirector().equals(this)){
+            film.setDirector(this);
+        }
+    }
+
     // Overrides...
 
     @Override
