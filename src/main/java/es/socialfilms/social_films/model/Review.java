@@ -29,6 +29,10 @@ public class Review implements Serializable {
     @JoinColumn(name = "film_id")
     private Film film;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     // Constructors ...
 
     public Review(){}
@@ -71,9 +75,22 @@ public class Review implements Serializable {
     }
 
     public void setFilm(Film film){
-        if (getFilm() != film){
+        if (this.film != film){
             this.film = film;
-            
+            film.addReview(this);
+        }
+    }
+
+    // Relationship: Review *-1 User
+
+    public User getUser(){
+        return user;
+    }
+
+    public void setUser(User user){
+        if(this.user != user ){
+            this.user = user;
+            //user.addReview(this);
         }
     }
 

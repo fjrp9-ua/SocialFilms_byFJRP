@@ -1,13 +1,16 @@
 package es.socialfilms.social_films.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +29,9 @@ public class User implements Serializable {
     private String password;
 
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Review> reviews = new HashSet<>();
 
     //Constructors...
 
@@ -67,6 +73,20 @@ public class User implements Serializable {
 
     public void setEmail(String email){
         this.email = email;
+    }
+
+    // Relationship: User 1-* Review
+
+    public Set<Review> getReviews(){
+        return reviews;
+    }
+
+    public void addReview(Review review){
+        if(this.reviews.contains(review)) return;
+        this.reviews.add(review);
+        if(review.getUser() != this){
+            review.setUser(this);
+        }
     }
 
     // Overrides...
