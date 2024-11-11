@@ -68,15 +68,15 @@
 
 </head>
 <body>
-    <form class="login-form" method="POST" th:action="@{/login}" th:object="${loginData}">
+    <form class="login-form" method="POST" th:action="@{/login}" >
         <h3 class="login-form-title">Login</h3>
         <div class="login-form-input">
-            <label for="username-input">Username</label>
-            <input type="text" id="username-input" name="username-input" placeholder="username" th:field="*{userName}" required />
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="username" required />
         </div>
         <div class="login-form-input">
-            <label for="password-input">Password</label>
-            <input type="password" id="password-input" name="password-input" placeholder="password" th:field="*{password}" required />
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="password" required />
         </div>
         <button type="submit">Login</button>
     </form>

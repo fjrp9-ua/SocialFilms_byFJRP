@@ -42,7 +42,8 @@ public class InitDBService {
 
         // Users...
         User user1 = new User("User1");
-        user1.setPassword("12345");
+        user1.setPassword("$2a$10$CVhvtWKFiKHGhXySz6qTO.85LLHC5.1RQgtbq0xM/YibVV6H2Sgr6");
+        // user1.setPassword("12345");
         user1.setEmail("user1@gmail.com");
         userRepository.save(user1);
 
