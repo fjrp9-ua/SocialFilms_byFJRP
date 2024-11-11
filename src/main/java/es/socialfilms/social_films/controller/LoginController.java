@@ -22,7 +22,6 @@ public class LoginController {
     @PostMapping("/login")
     public String loginSubmit(@ModelAttribute LoginData loginData, Model model) {
         System.out.println(loginData.getUserName() + "-" + loginData.getPassword());
-        return "redirect:/login";
+        return "about";
     }
-    
 }
