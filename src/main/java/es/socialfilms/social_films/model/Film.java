@@ -125,7 +125,7 @@ public class Film implements Serializable {
     }
 
     public void setDirector(Director director){
-        if (!this.director.equals(director)){
+        if (this.director != director){
             this.director = director;
             director.addFilm(this);
         }

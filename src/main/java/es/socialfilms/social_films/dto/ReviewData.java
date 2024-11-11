@@ -2,8 +2,6 @@ package es.socialfilms.social_films.dto;
 
 import java.util.Objects;
 
-import es.socialfilms.social_films.model.Review;
-
 public class ReviewData {
     
     private Long id;

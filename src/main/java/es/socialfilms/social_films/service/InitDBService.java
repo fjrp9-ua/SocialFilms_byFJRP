@@ -8,6 +8,7 @@ import es.socialfilms.social_films.model.Actor;
 import es.socialfilms.social_films.model.Director;
 import es.socialfilms.social_films.model.Film;
 import es.socialfilms.social_films.model.Genre;
+import es.socialfilms.social_films.model.Review;
 import es.socialfilms.social_films.model.User;
 import es.socialfilms.social_films.repository.ActorRepository;
 import es.socialfilms.social_films.repository.DirectorRepository;
@@ -81,7 +82,6 @@ public class InitDBService {
         film1.addActor(actor2);
         film1.addGenre(drama);
         film1.addGenre(mafia);
-        filmRepository.save(film1);
 
         Film film2 = new Film("The Godfather: Part II");
         film2.setCountry("United States");
@@ -92,7 +92,16 @@ public class InitDBService {
         film2.addActor(actor2);
         film2.addGenre(drama);
         film2.addGenre(mafia);
-        filmRepository.save(film2);
 
+        Review review1 = new Review("Great movie", 5);
+        review1.setUser(user1);
+        film1.addReview(review1);
+
+        Review review2 = new Review("Great movie", 5);
+        review2.setUser(user1);
+        film2.addReview(review2);
+
+        filmRepository.save(film1);
+        filmRepository.save(film2);
     }
 }
