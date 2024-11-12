@@ -21,5 +21,10 @@ public class UserController {
     public UserData getUserById(@PathVariable Long id) {
         return userService.findUserById(id);
     }
+
+    @GetMapping("/register")
+    public String registerForm(){
+        return "registerForm";
+    }
     
 }
