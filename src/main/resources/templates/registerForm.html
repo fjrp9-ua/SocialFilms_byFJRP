@@ -68,27 +68,27 @@
     </style>
 </head>
 <body>
-    <form class="register-form" method="POST" >
+    <form class="register-form" method="POST" th:action="@{/register}" th:object="${registerData}">
         <h3 class="register-form-title">Create an account</h3>
         <div class="register-form-input">
             <label for="email">Your email</label>
-            <input type="text" id="email" name="email" placeholder="email@email.com" required />
+            <input type="text" id="email" name="email" th:field="*{email}" placeholder="email@email.com" required />
         </div>
         <div class="register-form-input">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="username" required />
+            <input type="text" id="username" name="username" th:field="*{userName}" placeholder="username" required />
         </div>
         <div class="register-form-input">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="••••••••" required />
+            <input type="password" id="password" name="password" th:field="*{password}" placeholder="••••••••" required />
         </div>
         <div class="register-form-input">
             <label for="confirmPassword">Confirm password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required />
+            <input type="password" id="confirmPassword" name="confirmPassword" th:field="*{confirmPassword}" placeholder="••••••••" required />
         </div>
         <button type="submit">Create an account</button>
         <div>
-            <p>Already have an account? <a href="/">Login here</a></p>
+            <p>Already have an account? <a th:href="@{/login}">Login here</a></p>
         </div>
     </form>
 </body>
