@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+</head>
+<body>
+    <form class="login-form" method="POST" >
+        <h3 class="login-form-title">Create an account</h3>
+        <div class="login-form-input">
+            <label for="email">Your email</label>
+            <input type="text" id="email" name="email" placeholder="email@email.com" required />
+        </div>
+        <div class="login-form-input">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="username" required />
+        </div>
+        <div class="login-form-input">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="••••••••" required />
+        </div>
+        <div class="login-form-input">
+            <label for="confirmPassword">Confirm password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required />
+        </div>
+        <button type="submit">Create an account</button>
+        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+            Already have an account? <a href="#">Login here</a>
+        </p>
+    </form>
+</body>
+</html>
