@@ -24,6 +24,7 @@
             /* width: 20rem;
             height: 20rem; */
             color: #0a0a0a;
+            padding: 0 2rem;
         }
 
         .login-form-title{
@@ -79,6 +80,9 @@
             <input type="password" id="password" name="password" placeholder="password" required />
         </div>
         <button type="submit">Login</button>
+        <div>
+            <p>Create an account? <a th:href="@{/register}">Create an account here</a></p>
+        </div>
     </form>
 </body>
 </html>

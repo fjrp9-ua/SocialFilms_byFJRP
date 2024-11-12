@@ -11,7 +11,6 @@ import es.socialfilms.social_films.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -34,8 +33,9 @@ public class UserController {
     
     @PostMapping("/register")
     public String submitRegisterForm(RegisterData registerData){
+        //vvvvvvvvvvvvvvv TEMPORAL...
         System.out.println(registerData.getEmail() + "-" + registerData.getUserName() + "-" + registerData.getPassword() + "-" + registerData.getConfirmPassword());
-        return "login";
+        return "redirect:login";
     }
 
 }
