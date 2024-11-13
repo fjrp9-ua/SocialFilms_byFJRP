@@ -12,24 +12,23 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #0a0a0a;
         }
 
         .register-form{
-            font-family: Arial, Helvetica, sans-serif;
             display: flex;
             flex-direction: column;
             background-color: #ffffff;
             align-items: center;
-            border-radius: 6px;
-            /* width: 20rem;
-            height: 20rem; */
-            color: #0a0a0a;
-            padding: 0 2rem;
+            border-radius: 15px;
+            padding: 2.5rem 1rem;
         }
 
         .register-form-title{
             margin: 1.5rem 0.5rem;
-            font-size: 25px;
+            font-size: 30px;
         }
 
         .register-form-input{
@@ -64,32 +63,96 @@
             border-radius: 6px;
             border: 1px solid #a3a3a3;
             cursor: pointer;
+            color: white;
+            background-color: #3c3e44;
+            font-size: 16px;;
+        }
+
+        .login-redirect a {
+            color: #0a0a0a;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <form class="register-form" method="POST" th:action="@{/register}" th:object="${registerData}">
-        <h3 class="register-form-title">Create an account</h3>
+    <form onsubmit="handleForm(this)" class="register-form" id="register-form" method="POST" th:action="@{/register}" th:object="${registerData}">
+        <h3 class="register-form-title">Create Account</h3>
         <div class="register-form-input">
             <label for="email">Your email</label>
-            <input type="text" id="email" name="email" th:field="*{email}" placeholder="email@email.com" required />
+            <input type="text" id="email" name="email" th:field="*{email}" placeholder="email@email.com" />
         </div>
         <div class="register-form-input">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" th:field="*{userName}" placeholder="username" required />
+            <input type="text" id="username" name="username" th:field="*{userName}" placeholder="username" />
         </div>
         <div class="register-form-input">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" th:field="*{password}" placeholder="••••••••" required />
+            <input type="password" id="password" name="password" th:field="*{password}" placeholder="••••••••" />
         </div>
         <div class="register-form-input">
-            <label for="confirmPassword">Confirm password</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" th:field="*{confirmPassword}" placeholder="••••••••" required />
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" th:field="*{confirmPassword}" placeholder="••••••••" />
         </div>
-        <button type="submit">Create an account</button>
-        <div>
-            <p>Already have an account? <a th:href="@{/login}">Login here</a></p>
-        </div>
+        <button type="submit">Sign up</button>
     </form>
+    <div class="login-redirect"><p>Already have an account? <strong><a th:href="@{/login}">Sign in here</a></strong></p></div>
 </body>
+
+<script>
+
+    function errorInput(input) {
+        input.style.border = '1px solid #F88276';
+    }
+
+    function cleanInput(input) {
+        input.value = '';
+    }
+
+    function checkInput(input) {
+        if (input.value == '') {
+            errorInput(input);
+            return false;
+        }
+        input.style.border = '1px solid #a3a3a3';
+        return true;
+    }
+
+    function checkPasswords(password, confirmPassword) {
+        var correctPasswords = false;
+        if (!checkInput(password)) {
+            correctPasswords = false;
+        }
+        if (!checkInput(confirmPassword)) {
+            correctPasswords = false;
+        }
+        if (!correctPasswords || (password.value != confirmPassword.value)) {
+            cleanInput(confirmPassword);
+            return false;
+        }
+        return true;
+    }
+
+    function handleForm(form){
+        event.preventDefault();
+
+        var correctInputs = true;
+        var email = document.getElementById('email');
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
+        var confirmPassword = document.getElementById('confirmPassword');
+
+        if(!checkInput(email)) {
+            correctInputs = false;
+        }
+        if(!checkInput(username)) {
+            correctInputs = false;
+        }
+        if (!checkPasswords(password, confirmPassword)) {
+            correctInputs = false;
+        }
+
+        if (correctInputs) form.submit();
+    }
+</script>
+
 </html>
