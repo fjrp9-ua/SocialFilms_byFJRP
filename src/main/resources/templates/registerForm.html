@@ -118,7 +118,7 @@
     }
 
     function checkPasswords(password, confirmPassword) {
-        var correctPasswords = false;
+        var correctPasswords = true;
         if (!checkInput(password)) {
             correctPasswords = false;
         }
@@ -141,10 +141,10 @@
         var password = document.getElementById('password');
         var confirmPassword = document.getElementById('confirmPassword');
 
-        if(!checkInput(email)) {
+        if (!checkInput(email)) {
             correctInputs = false;
         }
-        if(!checkInput(username)) {
+        if (!checkInput(username)) {
             correctInputs = false;
         }
         if (!checkPasswords(password, confirmPassword)) {
