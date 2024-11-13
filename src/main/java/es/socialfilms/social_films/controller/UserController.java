@@ -32,9 +32,16 @@ public class UserController {
     }
     
     @PostMapping("/register")
-    public String submitRegisterForm(RegisterData registerData){
+    public String registerSubmit(RegisterData registerData){
         //vvvvvvvvvvvvvvv TEMPORAL...
-        System.out.println(registerData.getEmail() + "-" + registerData.getUserName() + "-" + registerData.getPassword() + "-" + registerData.getConfirmPassword());
+        UserData userData = new UserData();
+        userData.setEmail(registerData.getEmail());
+        userData.setUserName(registerData.getUserName());
+        userData.setPassword(registerData.getPassword());
+
+        if (userService.register(userData) == null) {
+            return "redirect:register";
+        }
         return "redirect:login";
     }
 
