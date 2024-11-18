@@ -156,7 +156,7 @@ public class Film implements Serializable {
     public void addReview(Review review){
         if(getReviews().contains(review)) return;
         this.reviews.add(review);
-        if(review.getFilm() != this){
+        if(review.getFilm() == null || review.getFilm().getId() != this.id){
             review.setFilm(this);
         }
     }

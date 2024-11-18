@@ -17,13 +17,24 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(AbstractHttpConfigurer::disable)
-        .authorizeHttpRequests(auth -> auth.requestMatchers("/login", "/register").permitAll()
-                                            .anyRequest().authenticated())
-        .formLogin(form -> form.loginPage("/login")
-                                .defaultSuccessUrl("/about", true)
-                                .failureUrl("/login")
-                                .permitAll());
+        // http.csrf(AbstractHttpConfigurer::disable)
+        // .authorizeHttpRequests(auth -> auth.requestMatchers("/", "/login", "/register", "/h2-console").permitAll()
+        //                                     .anyRequest().authenticated())
+        // .formLogin(form -> form.loginPage("/login")
+        //                         .defaultSuccessUrl("/", true)
+        //                         .failureUrl("/login")
+        //                         .permitAll());
+
+        http
+        .authorizeHttpRequests(auth -> auth
+            .anyRequest().permitAll()  // Permite el acceso a todas las solicitudes sin autenticación
+        )
+        .formLogin(form -> form
+            .loginPage("/login")
+            .defaultSuccessUrl("/", true)
+            .failureUrl("/login")
+            .permitAll()
+        );
 
         return http.build();
     }

@@ -75,7 +75,7 @@ public class Review implements Serializable {
     }
 
     public void setFilm(Film film){
-        if (this.film != film){
+        if (this.film == null || this.film.getId() != film.getId()){
             this.film = film;
             film.addReview(this);
         }

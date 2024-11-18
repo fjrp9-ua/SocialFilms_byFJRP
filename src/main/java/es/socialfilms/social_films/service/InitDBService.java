@@ -14,6 +14,7 @@ import es.socialfilms.social_films.repository.ActorRepository;
 import es.socialfilms.social_films.repository.DirectorRepository;
 import es.socialfilms.social_films.repository.FilmRepository;
 import es.socialfilms.social_films.repository.GenreRepository;
+import es.socialfilms.social_films.repository.ReviewRepository;
 import es.socialfilms.social_films.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
 
@@ -36,6 +37,9 @@ public class InitDBService {
 
     @Autowired
     private FilmRepository filmRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     @PostConstruct
     public void initDatabase(){
@@ -77,6 +81,7 @@ public class InitDBService {
         Film film1 = new Film("The Godfather");
         film1.setCountry("United States");
         film1.setSynopsis("The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.");
+        film1.setRunningTime(175);
         film1.setReleaseYear(1972);
         film1.setDirector(director1);
         film1.addActor(actor1);
@@ -87,6 +92,7 @@ public class InitDBService {
         Film film2 = new Film("The Godfather: Part II");
         film2.setCountry("United States");
         film2.setSynopsis("The early life and career of Vito Corleone in 1920s New York City is portrayed, while his son, Michael, expands and tightens his grip on the family crime syndicate.");
+        film2.setRunningTime(202);
         film2.setReleaseYear(1974);
         film2.setDirector(director1);
         film2.addActor(actor1);
@@ -94,15 +100,21 @@ public class InitDBService {
         film2.addGenre(drama);
         film2.addGenre(mafia);
 
-        Review review1 = new Review("Great movie", 5);
-        review1.setUser(user1);
-        film1.addReview(review1);
-
-        Review review2 = new Review("Great movie", 5);
-        review2.setUser(user1);
-        film2.addReview(review2);
-
         filmRepository.save(film1);
         filmRepository.save(film2);
+
+        Review review1 = new Review("Great movie", 5);
+        review1.setUser(user1);
+        review1.setFilm(film1);
+        reviewRepository.save(review1);
+        film1.addReview(review1);
+
+        Review review2 = new Review("Great movie", 4);
+        review2.setUser(user1);
+        review2.setFilm(film1);
+        reviewRepository.save(review2);
+        film1.addReview(review2);
+
+        
     }
 }
