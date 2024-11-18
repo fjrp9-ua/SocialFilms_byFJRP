@@ -25,9 +25,9 @@
                     <span class="text-gray-400" th:text="${filmData.getRunningTime()} + ' mins.'"></span>
                 </div>
                 <div class="flex gap-2 mb-4">
-                    <span class="bg-gray-800 px-3 py-1 rounded-full text-sm" th:each="genre : ${genreList}" th:text="${genre.getName()}">Drama</span>
+                    <span class="bg-gray-800 px-3 py-1 rounded-full text-sm" th:each="genre : ${genreList}" th:text="${genre.getName()}"></span>
                 </div>
-                <p class="text-gray-300 mb-6" th:text="${filmSynopsis}"></p>
+                <p class="text-gray-300 mb-6" th:text="${filmData.getSynopsis()}"></p>
                 <!-- <button class="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg font-bold transition-colors duration-300">Watch Trailer</button> -->
                 <div class="mt-6 grid grid-cols-2 gap-4">
                     <div>
@@ -52,8 +52,8 @@
         <!-- Reviews Section -->
         <section class="mb-12">
             <h2 class="text-2xl font-bold mb-6">User Reviews</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
+            <p th:if="${#lists.isEmpty(reviews)}" class="text-gray-400">No reviews available.</p>
+            <div th:if="${!#lists.isEmpty(reviews)}" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div th:each="review : ${reviews}" class="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors duration-300">
                     <div class="flex items-center mb-4">
                         <img src="../images/default-avatar.png" alt="User Avatar" class="w-12 h-12 rounded-full mr-4">
